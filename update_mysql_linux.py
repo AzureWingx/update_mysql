@@ -18,12 +18,12 @@ DB_NAME = "largescree"
 try:
     # 尝试连接3306端口
     try:
-        subprocess.call("mysql -h {} -P 3306 -u {} -p{} {} -e 'SHOW DATABASES' > /dev/null 2>&1".format(HOST, USERNAME, PASSWORD, DB_NAME), shell=True)
+        subprocess.check_call("mysql -h {} -P 3306 -u {} -p{} {} -e 'SHOW DATABASES' > /dev/null 2>&1".format(HOST, USERNAME, PASSWORD, DB_NAME), shell=True)
         print("成功连接3306端口")
         port = 3306
     except subprocess.CalledProcessError:
         print("无法连接3306端口，尝试连接xxx端口")
-        subprocess.call("mysql -h {} -P xxx -u {} -p{} {} -e 'SHOW DATABASES' > /dev/null 2>&1".format(HOST, USERNAME, PASSWORD, DB_NAME), shell=True)
+        subprocess.check_call("mysql -h {} -P xxx -u {} -p{} {} -e 'SHOW DATABASES' > /dev/null 2>&1".format(HOST, USERNAME, PASSWORD, DB_NAME), shell=True)
         print("成功连接xxx端口")
         port = xxx
 
